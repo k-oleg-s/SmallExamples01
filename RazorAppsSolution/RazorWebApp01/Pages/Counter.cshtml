@@ -1,0 +1,22 @@
+﻿@page "/counter"
+@model RazorWebApp01.Pages.CounterModel
+@{
+    ViewData["Title"] = "Counter";
+}
+
+<h1>Counter</h1>
+
+<p>x_cs=@Model.x_cs</p>
+<p>local counter:@cnt</p>
+<button class="btn btn-primary" onclick="@IncrementCnt()">Counter+1</button>
+
+@functions {
+    int cnt = 0;
+
+    int IncrementCnt ()
+    {
+        Model.x_cs= Model.x_cs + 1;
+        return cnt++;
+
+    }
+}

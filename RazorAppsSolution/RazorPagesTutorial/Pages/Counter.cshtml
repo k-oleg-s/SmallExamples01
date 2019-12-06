@@ -1,4 +1,4 @@
-﻿@page "/counter"
+﻿@page "/c"
 
 <h1>Counter</h1>
 
@@ -10,7 +10,21 @@
 @functions {
     int currentCount = 0;
     int IncrementCount()
-    { 
-       return currentCount++; 
+    {
+        return currentCount++;
+    }
+}
+
+<p>
+    It's @DayName! Our customers include restaurants, hotels,
+    and cruise lines.
+</p>
+
+@functions
+{
+    public string DayName { get; set; }
+    public void OnGet()
+    {
+        Model.DayName = DateTime.Now.ToString("dddd");
     }
 }
