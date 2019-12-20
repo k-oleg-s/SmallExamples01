@@ -1,17 +1,74 @@
-﻿@page "/Create"
-@model CreateModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@page
+@model RazorWebApp01.Pages.Knowledge.CreateModel
 
-<p>Enter a customer name:</p>
+@{
+    ViewData["Title"] = "Create";
+    int rows = Model._context.Nts.Count();
+}
 
-<form method="post">
-    <div asp-validation-summary="ModelOnly"></div>
-    <span asp-validation-for="mPage.text"></span>
-    Name:
-    <input asp-for="mPage.text" />
-    <input type="submit" />
-</form>
+<h1>Create</h1>
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nt.tags" class="control-label"></label>
+                <input asp-for="Nt.tags" class="form-control" />
+                <span asp-validation-for="Nt.tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nt.text" class="control-label"></label>
+                <input asp-for="Nt.text" class="form-control" />
+                <span asp-validation-for="Nt.text" class="text-danger"></span>
+            </div>
+
+            <form enctype="multipart/form-data" method="post">
+                <dl>
+                    <dt>
+                        <label asp-for="@Model.Photo"></label>
+                    </dt>
+                    <dd>
+                        <input asp-for="@Model.Photo" type="file">
+                        <span asp-validation-for="@Model.Photo"></span>
+                    </dd>
+                </dl>
+                <input class="btn border border-info" asp-page-handler="Upload1File" type="submit" value="Upload 1 file"/>
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@*<hr />
+    <div class="row">
+        <button type="button" class="btn btn-outline-primary" asp-action="AddBlk">Primary</button>
+        <button type="button" class="btn btn-outline-secondary">Secondary</button>
+        <button type="button" class="btn btn-outline-success">Success</button>
+    </div>
+
+    <p>всего @rows записей</p>
+
+    @{ foreach (var n in Model._context.Nt)
+        {   <div class="media">
+                <img src="~/images/IMG_1261.jpg"  class="img-thumbnail  align-self-start mr-3" alt="картинка" width="300">
+                <div class="media-body">
+                    <h5 class="mt-0">Top-aligned media</h5>
+                    <p>ID=@n.Id  text: @n.text </p>
+                </div>
+            </div>} }*@
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

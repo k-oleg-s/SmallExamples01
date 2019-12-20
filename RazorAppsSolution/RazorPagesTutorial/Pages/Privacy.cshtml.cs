@@ -29,7 +29,7 @@ namespace RazorPagesTutorial.Pages
             Message += $" Server time is { DateTime.Now }";
         }
 
-        public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> files)
+        public  IActionResult OnPostUpload(List<IFormFile> files)
         {
             if (ModelState.IsValid)
             {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using RazorPagesContacts.Models;
 using Microsoft.EntityFrameworkCore;
 using Knowledge;
+using RazorWebApp01.Data;
 
 namespace RazorWebApp01
 {
@@ -27,9 +28,15 @@ namespace RazorWebApp01
         public void ConfigureServices(IServiceCollection services)
         {  
             services.AddRazorPages();
-            services.AddDbContextPool<KnowledgeContext>(optionsA => optionsA.UseSqlite("Data Source=blogging.db"));
+            //services.AddDbContextPool<KnowledgeContext>(optionsA => optionsA.UseSqlite("Data Source=knowledge.db"));
             //services.AddDbContext<CustomerDbContext>(options => options.UseInMemoryDatabase("namedb"));
-            services.AddScoped<IKnowrepo, SliteRepo>();
+            //services.AddScoped<IKnowrepo, SliteRepo>();
+
+            services.AddDbContext<RazorPagesKnowContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("RazorPagesKnowContext")));
+
+            //services.AddDbContext<RazorPagesKnowContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("RazorPagesKnowContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +63,7 @@ namespace RazorWebApp01
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                //endpoints.Ma ("/Knowledge/Index");
             });
         }
     }

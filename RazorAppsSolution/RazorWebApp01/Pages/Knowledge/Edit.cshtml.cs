@@ -1,36 +1,46 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using RazorPagesContacts.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Knowledge;
+using RazorWebApp01.Data;
 
-namespace Knowledge
+namespace RazorWebApp01.Pages.Knowledge
 {
     public class EditModel : PageModel
     {
-        private readonly KnowledgeContext _context;
+        private readonly RazorWebApp01.Data.RazorPagesKnowContext _context;
 
-        public EditModel(KnowledgeContext context)
+        public EditModel(RazorWebApp01.Data.RazorPagesKnowContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Page epage { get; set; }
+        public Nt Nt { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            epage = await _context.Pages.FindAsync(id);
-
-            if (epage == null)
+            if (id == null)
             {
-                return RedirectToPage("./Index");
+                return NotFound();
             }
 
+            Nt = await _context.Nts.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Nt == null)
+            {
+                return NotFound();
+            }
             return Page();
         }
 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -38,7 +48,7 @@ namespace Knowledge
                 return Page();
             }
 
-            _context.Attach(epage).State = EntityState.Modified;
+            _context.Attach(Nt).State = EntityState.Modified;
 
             try
             {
@@ -46,11 +56,22 @@ namespace Knowledge
             }
             catch (DbUpdateConcurrencyException)
             {
-                throw new Exception($"Customer {epage.Id} not found!");
+                if (!NtExists(Nt.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return RedirectToPage("./Index");
         }
 
+        private bool NtExists(int id)
+        {
+            return _context.Nts.Any(e => e.Id == id);
+        }
     }
 }

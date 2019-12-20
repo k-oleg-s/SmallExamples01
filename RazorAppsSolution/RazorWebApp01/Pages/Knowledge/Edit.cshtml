@@ -1,21 +1,45 @@
-﻿@page "{id:int}"
-@model Knowledge.EditModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@page
+@model RazorWebApp01.Pages.Knowledge.EditModel
 
+@{
+    ViewData["Title"] = "Edit";
+}
 
-<h1>Edit Customer - @Model.epage.Id</h1>
-<form method="post">
-    <div asp-validation-summary="All"></div>
-    <input asp-for="epage.Id" type="hidden" />
-    <div>
-        <label asp-for="epage.text"></label>
-        <div>
-            <input asp-for="epage.text" />
-            <span asp-validation-for="epage.text"></span>
-        </div>
+<h1>Edit</h1>
+
+<h4>Nt</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Nt.Id" />
+            <div class="form-group">
+                <label asp-for="Nt.text" class="control-label"></label>
+                <input asp-for="Nt.text" class="form-control" />
+                <span asp-validation-for="Nt.text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nt.tags" class="control-label"></label>
+                <input asp-for="Nt.tags" class="form-control" />
+                <span asp-validation-for="Nt.tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nt.pics" class="control-label"></label>
+                <input asp-for="Nt.pics" class="form-control" />
+                <span asp-validation-for="Nt.pics" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
 
-    <div>
-        <button type="submit">Save</button>
-    </div>
-</form>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

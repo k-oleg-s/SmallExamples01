@@ -17,6 +17,13 @@ namespace RazorWebApp01.Pages
             _logger = logger;
         }
 
+
+        public int cnt = 0;
+        public IActionResult IncrementCount()
+        {
+            cnt++;
+            return Page();
+        }
         public void OnGet()
         {
 

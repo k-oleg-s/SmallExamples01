@@ -2,7 +2,11 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+   
 }
+
+    <button class="btn btn-primary" type="button" onclick="@Model.cnt++">Click me</button>
+<p>counter=@Model.cnt </p>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>

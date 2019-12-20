@@ -1,39 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Knowledge;
+using RazorWebApp01.Data;
 
-namespace Knowledge
+namespace RazorWebApp01.Pages.Knowledge
 {
     public class IndexModel : PageModel
     {
-        private readonly KnowledgeContext _context;
-        public IList<Page> Pages { get; set; }
+        private readonly RazorPagesKnowContext _context;
 
-        public IndexModel(KnowledgeContext context)
+        public IndexModel(RazorPagesKnowContext context)
         {
             _context = context;
         }
 
-       
+        public IList<Nt> Nt { get;set; }
 
         public async Task OnGetAsync()
         {
-            Pages = await _context.Pages.ToListAsync();
-        }
-
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
-        {
-            var pg = await _context.Pages.FindAsync(id);
-
-            if (pg != null)
-            {
-                _context.Pages.Remove(pg);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage();
+            Nt = await _context.Nts.ToListAsync();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Knowledge
 {
    
-    public class Page
+    public class Nt
     {
         public int Id { get; set; }
 
@@ -18,67 +18,71 @@ namespace Knowledge
         public string pics { get; set; }
     }
 
-    public class SliteRepo:IKnowrepo 
-    {
-        private readonly KnowledgeContext context;
-        public SliteRepo(KnowledgeContext cntxt)
-        {
-            context = cntxt;
-        }
+    //public class SliteRepo:IKnowrepo 
+    //{
+    //    private readonly KnowledgeContext context;
+    //    public SliteRepo(KnowledgeContext cntxt)
+    //    {
+    //        context = cntxt;
+    //    }
 
-        public Page AddPage(Page pg)
-        {
-            if (pg != null)
-            {
-                context.Add(pg);
-                context.SaveChangesAsync();
-            }
-            return pg;
-        }
+    //    public Nt AddPage(Nt pg)
+    //    {
+    //        if (pg != null)
+    //        {
+    //            context.Add(pg);
+    //            context.SaveChangesAsync();
+    //        }
+    //        return pg;
+    //    }
 
-        public Page DelPage(int id)
-        {
-            Page pg = context.Pages.Find(id);
-            if (pg != null)
-            {
-                context.Pages.Remove(pg);
-            }
-            return pg;
-        }
+    //    public Nt DelPage(int id)
+    //    {
+    //        Nt pg = context.Pages.Find(id);
+    //        if (pg != null)
+    //        {
+    //            context.Pages.Remove(pg);
+    //        }
+    //        return pg;
+    //    }
 
-        public Page UpdatePage(Page pgtoupd)
-        {
-            var pg = context.Pages.Attach(pgtoupd);
-            pg.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
-            return pgtoupd;
-        }
+    //    public Nt UpdatePage(Nt pgtoupd)
+    //    {
+    //        var pg = context.Pages.Attach(pgtoupd);
+    //        pg.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+    //        context.SaveChanges();
+    //        return pgtoupd;
+    //    }
 
-        public Page GetPage(int id)
-        {
-            return  context.Pages.Find(id);
-        }
+    //    public Nt GetPage(int id)
+    //    {
+    //        return  context.Pages.Find(id);
+    //    }
 
-        public IEnumerable<Page> GetPages()
-        {
-            return context.Pages;
-        }
-    }
-    interface IKnowrepo
-    { Page GetPage(int id);
-        Page AddPage(Page pg);
-        Page DelPage(int id);
-        Page UpdatePage(Page pg);
-        IEnumerable<Page> GetPages();
-    }
+    //    public IEnumerable<Nt> GetPages()
+    //    {
+    //        return context.Pages;
+    //    }
+    //}
+    //interface IKnowrepo
+    //{ Nt GetPage(int id);
+    //    Nt AddPage(Nt pg);
+    //    Nt DelPage(int id);
+    //    Nt UpdatePage(Nt pg);
+    //    IEnumerable<Nt> GetPages();
+    //}
 
 
-    public class KnowledgeContext : DbContext
-    {
-        public DbSet<Page> Pages { get; set; }
+    //public class KnowledgeContext : DbContext
+    //{
+    //    public KnowledgeContext(DbContextOptions<KnowledgeContext> options) : base(options)
+    //    {
+                
+    //    }
+    //    public DbSet<Nt> Pages { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder options)
-        //    => options.UseSqlite("Data Source=knowledge.db");
-    }
+    //    //protected override void OnConfiguring(DbContextOptionsBuilder options)
+    //    //    => options.UseSqlite("Data Source=knowledge.db");
+    //}
 
 }

@@ -17,8 +17,9 @@ namespace RazorWebApp01.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            return  RedirectToPage("./Knowledge/i");
         }
     }
 }
