@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RazorPagesContacts.Models;
 using Microsoft.EntityFrameworkCore;
 using Knowledge;
 using RazorWebApp01.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace RazorWebApp01
 {
@@ -31,12 +31,27 @@ namespace RazorWebApp01
             //services.AddDbContextPool<KnowledgeContext>(optionsA => optionsA.UseSqlite("Data Source=knowledge.db"));
             //services.AddDbContext<CustomerDbContext>(options => options.UseInMemoryDatabase("namedb"));
             //services.AddScoped<IKnowrepo, SliteRepo>();
+          
 
             services.AddDbContext<RazorPagesKnowContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RazorPagesKnowContext")));
 
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 1;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+            })
+            .AddEntityFrameworkStores<RazorPagesKnowContext>();
+
+            services.AddSingleton<Knowledge.UserOptions>();
+            //services.AddScoped<Nt>();
             //services.AddDbContext<RazorPagesKnowContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("RazorPagesKnowContext")));
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +60,7 @@ namespace RazorWebApp01
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
             else
             {
@@ -58,12 +74,12 @@ namespace RazorWebApp01
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();     // авторизация
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                //endpoints.Ma ("/Knowledge/Index");
             });
         }
     }

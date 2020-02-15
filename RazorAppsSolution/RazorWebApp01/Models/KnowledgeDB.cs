@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,16 +8,54 @@ using System.Threading.Tasks;
 
 namespace Knowledge
 {
-   
+   public enum Lang {[Display(Name = "English")] ENG, [Display(Name = "Russian")] RUS, [Display(Name = "German")] GER }
     public class Nt
     {
         public int Id { get; set; }
+       
+        [Required]
+        public string word { get; set; }
+        public string translation { get; set; }
 
-        [Required, StringLength(10)]
-        public string text { get; set; }
-        public string tags { get; set; }
+        public Lang wordLng { get; set; }
+        public Lang transLng { get; set; }
+
+        public ICollection<Tag> stags { get; set; }
+        public ICollection<Example> examples { get; set; }
         public string pics { get; set; }
+        public byte? mark { get; set; }
+
+
+        public IdentityUser Owner { get; set; }
+        public Boolean shared { get; set; }
+        public string text { get; set; }
     }
+
+    public class Example
+    {
+        public int ID { get; set; }
+        public ICollection<Tag> tags { get; set; }
+        [Required]
+        public string exampletext{ get; set; }
+    }
+
+    public class Tag
+    {
+        public int ID { get; set; }
+        [Required]
+        public  string txt { get; set; }
+    }
+
+    public class UserOptions
+    {
+        public int ID { get; set; }
+        public IdentityUser user { get; set; }
+        public Lang toLang { get; set; }
+        public Lang fromLang { get; set; }
+        public Boolean share { get; set; }
+    }
+
+
 
     //public class SliteRepo:IKnowrepo 
     //{
@@ -77,7 +116,7 @@ namespace Knowledge
     //{
     //    public KnowledgeContext(DbContextOptions<KnowledgeContext> options) : base(options)
     //    {
-                
+
     //    }
     //    public DbSet<Nt> Pages { get; set; }
 

@@ -1,0 +1,18 @@
+﻿@page
+@model tstTagHelpers01.page01Model
+@{
+    ViewData["Title"] = "page01";
+    string pgmsg = "x01";
+    }
+
+<h1>page01</h1>
+<p>message: @Model.msg</p>
+<p>Data1 txt : @Model._d.txt</p>
+
+<form method="POST">
+    <button type="submit" asp-route-data="wayone" asp-page-handler="Way1">Way 1</button>
+</form>
+
+<form method="POST">
+    <button type="submit" asp-route-data="waytwo" asp-page-handler="Way2">Way 2</button>
+</form>

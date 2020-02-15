@@ -24,9 +24,9 @@ namespace RazorWebApp01.Pages
             cnt++;
             return Page();
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            return RedirectToPage("/Knowledge/Index");
         }
     }
 }

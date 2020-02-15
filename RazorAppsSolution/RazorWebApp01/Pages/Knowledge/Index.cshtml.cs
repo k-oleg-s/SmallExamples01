@@ -14,16 +14,16 @@ namespace RazorWebApp01.Pages.Knowledge
     {
         private readonly RazorPagesKnowContext _context;
 
-        public IndexModel(RazorPagesKnowContext context)
+        public IndexModel(RazorPagesKnowContext context, UserOptions uo)
         {
             _context = context;
         }
 
-        public IList<Nt> Nt { get;set; }
+        public IList<Nt> Nts { get;set; }
 
         public async Task OnGetAsync()
         {
-            Nt = await _context.Nts.ToListAsync();
+            Nts = await _context.Nts.ToListAsync();
         }
     }
 }

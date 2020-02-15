@@ -2,47 +2,31 @@
 @model RazorWebApp01.Pages.Knowledge.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Words index";
 }
 
-<h1>Index</h1>
+    <h3>@ViewData["Title"]</h3>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
+
+<table class="table" >
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nt[0].text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nt[0].tags)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nt[0].pics)
-            </th>
-            <th></th>
+            <th>Word</th>
+            <th>Translation</th>
+            <th>Picture</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Nt) {
+@foreach (var item in Model.Nts) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tags)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pics)
-            </td>
+            <td>@item.word</td>
+            <td>@item.translation</td>
+            <td>@item.pics</td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
-        </tr>
-}
+        </tr>}
     </tbody>
 </table>

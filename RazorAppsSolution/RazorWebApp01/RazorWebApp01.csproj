@@ -7,6 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20191211180807_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191211180807_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191217200126_Migr2RenameTbl.cs" />
+    <Compile Remove="Migrations\20191217200126_Migr2RenameTbl.Designer.cs" />
+    <Compile Remove="Migrations\20191224185655_Migr03.cs" />
+    <Compile Remove="Migrations\20191224185655_Migr03.Designer.cs" />
+    <Compile Remove="Migrations\20200103151159_Migr04.cs" />
+    <Compile Remove="Migrations\20200103151159_Migr04.Designer.cs" />
+    <Compile Remove="Migrations\20200104104124_Migr05.cs" />
+    <Compile Remove="Migrations\20200104104124_Migr05.Designer.cs" />
+    <Compile Remove="Migrations\20200108143528_Migr06.cs" />
+    <Compile Remove="Migrations\20200108143528_Migr06.Designer.cs" />
+    <Compile Remove="Migrations\20200215164301_Migr08.cs" />
+    <Compile Remove="Migrations\20200215164301_Migr08.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -23,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\imagesUpleaded\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

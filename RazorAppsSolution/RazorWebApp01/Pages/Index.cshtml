@@ -2,13 +2,13 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-   
+    string person = "Bro";
+    if (User.Identity.IsAuthenticated) person = User.Identity.Name;
 }
 
-    <button class="btn btn-primary" type="button" onclick="@Model.cnt++">Click me</button>
-<p>counter=@Model.cnt </p>
+
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome @person to your own words DB</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

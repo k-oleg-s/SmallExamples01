@@ -9,9 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocsMicroExamplesFileTransf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorWebApp01", "RazorWebApp01\RazorWebApp01.csproj", "{DB8F5B4E-C631-4412-871F-AB7E713456AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{7057EAF3-2FB9-4D05-A7C3-9B14F238D31E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{7057EAF3-2FB9-4D05-A7C3-9B14F238D31E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testDB01", "testDB01\testDB01.csproj", "{711DFE11-1536-48A5-9BC3-7EA7B7C1A218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testDB01", "testDB01\testDB01.csproj", "{711DFE11-1536-48A5-9BC3-7EA7B7C1A218}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APP1", "APP1\APP1.csproj", "{EF6D2467-F573-4A19-8FFA-353239A5914F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityExample", "..\..\..\..\Downloads\aspnetcore3-authentication-master\aspnetcore3-authentication-master\IdentityExample\IdentityExample.csproj", "{7AD481DD-E176-4DC6-9BD6-1B696BF549D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tstTagHelpers01", "tstTagHelpers01\tstTagHelpers01.csproj", "{3D8D4E6E-9F68-4873-A79E-DF1D38D500C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{711DFE11-1536-48A5-9BC3-7EA7B7C1A218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{711DFE11-1536-48A5-9BC3-7EA7B7C1A218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{711DFE11-1536-48A5-9BC3-7EA7B7C1A218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF6D2467-F573-4A19-8FFA-353239A5914F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF6D2467-F573-4A19-8FFA-353239A5914F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF6D2467-F573-4A19-8FFA-353239A5914F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF6D2467-F573-4A19-8FFA-353239A5914F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD481DD-E176-4DC6-9BD6-1B696BF549D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD481DD-E176-4DC6-9BD6-1B696BF549D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD481DD-E176-4DC6-9BD6-1B696BF549D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD481DD-E176-4DC6-9BD6-1B696BF549D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D8D4E6E-9F68-4873-A79E-DF1D38D500C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D8D4E6E-9F68-4873-A79E-DF1D38D500C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D8D4E6E-9F68-4873-A79E-DF1D38D500C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D8D4E6E-9F68-4873-A79E-DF1D38D500C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

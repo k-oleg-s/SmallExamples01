@@ -1,0 +1,71 @@
+﻿@page
+@using RazorWebApp01.Data;
+@model RazorWebApp01.OptionsModel
+@{
+    ViewData["Title"] = "Настройки";
+    string shared = string.Empty;
+    if (!Model._uo.share) shared = "не";
+
+        }
+
+<h1></h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <input hidden asp-for="ExistingPhotoPath" />
+
+
+    <form>
+        <fieldset>
+            <legend>Профиль пользователя</legend>
+            <p><label asp-for="User">Логин пользователя: @User.Identity.Name</label></p>
+        </fieldset>
+        @*<p><input type="submit" value="Отправить"></p>*@
+
+    <fieldset>
+        <legend>Настройки изучения слов</legend>
+        <p><label asp-for="User">Перевод слов с @Model._uo.fromLang языка</label></p>
+        <p><label asp-for="User">Перевод слов на @Model._uo.toLang язык</label></p>
+        <p><label asp-for="User">Сделать новые слова @Model._uo.toLang доступными для всех</label></p>
+    </fieldset>
+
+
+    </form>
+
+
+
+    @*<p>current User info:</p>
+    <p>User.Identity.Name  User.Identity.IsAuthenticated User.Identity.AuthenticationType</p>
+    <p> @User.Identity.Name  @User.Identity.IsAuthenticated @User.Identity.AuthenticationType </p>
+    <p> ---</p>
+    <p> options ID:@Model._uo.ID  his native:@Model._uo.nativeL  he learns:@Model._uo.toLang  </p>
+
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+            Default checkbox
+        </label>
+    </div>*@
+
+    <div class="form-group row">
+        <label asp-for="ll" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            @*<select asp-for="ll" class="custom-select mr-sm-2"
+                        asp-items="a,b"
+                    <option value="">Please Select</option>
+                </select>*@
+            <span asp-validation-for="ll" class="text-danger"></span>
+        </div>
+    </div>
+
+    <form enctype="multipart/form-data" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        @*<input type="text" asp-for="_uo.learnedL" />
+            <input type="text" asp-for="_uo.nativeL" />*@
+        <button type="submit">Save</button>
+    </form>
+
+}
+else
+{<p>no User logged in.</p>}

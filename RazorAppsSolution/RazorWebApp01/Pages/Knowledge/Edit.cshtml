@@ -3,41 +3,55 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var photoPath = "~/imagesUploaded/" + (Model.Nt.pics ?? "no_image.jpg");
 }
 
-<h1>Edit</h1>
+<h1>u r Editing note w id: @Model.Nt.Id</h1>
 
-<h4>Nt</h4>
-<hr />
+
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form enctype="multipart/form-data" method="post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
             <input type="hidden" asp-for="Nt.Id" />
-            <div class="form-group">
+            <input type="hidden" asp-for="Nt.pics" />
+
+            <div class="form-group row">
                 <label asp-for="Nt.text" class="control-label"></label>
                 <input asp-for="Nt.text" class="form-control" />
                 <span asp-validation-for="Nt.text" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Nt.tags" class="control-label"></label>
-                <input asp-for="Nt.tags" class="form-control" />
-                <span asp-validation-for="Nt.tags" class="text-danger"></span>
+            @*Display the existing employee photo*@
+            <div class="form-group row col-sm-4 offset-4">
+                <img class="imageThumbnail" src="@photoPath" asp-append-version="true" />
             </div>
-            <div class="form-group">
-                <label asp-for="Nt.pics" class="control-label"></label>
-                <input asp-for="Nt.pics" class="form-control" />
-                <span asp-validation-for="Nt.pics" class="text-danger"></span>
+
+            <div class="form-group row">
+                <dl>
+                    <dt>
+                        <label asp-for="Photo">Photo file:</label>
+                    </dt>
+                    <dd>
+                        <input asp-for="Photo" type="file">
+                        <span asp-validation-for="Photo"></span>
+                    </dd>
+                </dl>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a asp-page="./Index"  class="btn btn-primary">Cancel</a>
+                </div>
             </div>
+
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/Index">Home</a>
 </div>
 
 @section Scripts {
